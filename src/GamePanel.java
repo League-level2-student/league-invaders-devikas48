@@ -32,7 +32,7 @@ int width = 50;
 int height = 50;
 
 Rocketship rocket = new Rocketship(250, 550, width, height);
-
+ObjectManager objectmanager = new ObjectManager(rocket);
 	
 	
 public GamePanel() {
@@ -69,7 +69,7 @@ public void  updateMenuState() {
 		  
 }
 public void updateGameState() { 
-		  
+	objectmanager.update();
 		  
 		  
 	  
@@ -96,7 +96,8 @@ public void drawMenuState(Graphics g) {
 public void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);	
-	rocket.draw(g);
+	objectmanager.draw(g);
+	
 }
 public void drawEndState(Graphics g)  { 
 	g.setColor(Color.RED);
