@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -34,7 +36,15 @@ int height = 50;
 Rocketship rocket = new Rocketship(250, 550, width, height);
 ObjectManager objectmanager = new ObjectManager(rocket);
 	
-	
+
+public static BufferedImage image;
+public static boolean needImage = true;
+public static boolean gotImage = false;	
+
+
+
+
+
 public GamePanel() {
 titleFont = new Font("Arial", Font.PLAIN, 48);
 title2Font = new Font("Arial", Font.PLAIN, 30);
@@ -44,6 +54,10 @@ title4Font = new Font("Arial", Font.PLAIN, 30);
 title6Font = new Font("Arial", Font.PLAIN, 30);
 frameDraw = new Timer(1000/60,this);
 frameDraw.start();
+
+if (needImage) {
+    loadImage ("space.png");
+}
 
 }
 
@@ -94,8 +108,13 @@ public void drawMenuState(Graphics g) {
 	
 }
 public void drawGameState(Graphics g) {
-	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);	
+	if (gotImage) {
+		g.drawImage(image, 0, 0, LeagueInvaders.width, LeagueInvaders.height, null);
+	} else {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);		
+}
+	
 	objectmanager.draw(g);
 	
 }
@@ -176,9 +195,19 @@ public void keyReleased(KeyEvent e) {
 }
 
 
-} 
+ 
 
 
+void loadImage(String imageFile) {
+    if (needImage) {
+        try {
+            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+	    gotImage = true;
+        } catch (Exception e) {
+            
+        }
+        needImage = false;
+    }
+}
 
-
-
+}
