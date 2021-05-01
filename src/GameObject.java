@@ -12,6 +12,7 @@ public class GameObject {
 	 int speed = 0;
 	 boolean isActive = true;
 	 
+	 
 	 public GameObject (int x, int y, int width, int height){
 		 this.x = x;
 		 this.y = y;
@@ -21,7 +22,7 @@ public class GameObject {
 	 }
 	 
 	 public void update() {
-		 
+		 System.out.println("hi");
 	 }
 
 }
