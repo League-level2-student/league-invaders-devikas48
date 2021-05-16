@@ -175,7 +175,13 @@ public void keyPressed(KeyEvent e) {
 	        startGame();
 	    }
 		 
-	}  
+	} 
+	
+	if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+		if (currentState == GAME) {
+		objectmanager.addProjectile(rocket.getProjectile());
+		}
+	}
 	
 	
 	

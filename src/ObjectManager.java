@@ -16,8 +16,8 @@ public class ObjectManager implements ActionListener{
 		this.rocket = rocket;
 	}
 	
-	public void addProjectile() {
-		
+	public void addProjectile(Projectile p) {
+		projectiles.add(p);
 	}
 	
 	public void addAlien() {
@@ -35,7 +35,15 @@ public class ObjectManager implements ActionListener{
 				aliens.get(i).isActive = false;
 			}
 		}
-	
+		
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).update();
+		
+			
+			if(projectiles.get(i).y < 0) {
+				projectiles.get(i).isActive = false;
+			}
+		}
 		
 	}
 	
