@@ -19,12 +19,13 @@ public class GameObject {
 		 this.y = y;
 		 this. width = width;
 		 this.height = height;
+		 this.collisionBox = collisionBox;
 		 
 		 
 	 }
 	 
 	 public void update() {
-		 
+		 collisionBox.setBounds(x, y, width, height); 
 	 }
 
 }

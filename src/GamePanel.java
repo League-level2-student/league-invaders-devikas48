@@ -85,7 +85,10 @@ public void  updateMenuState() {
 }
 public void updateGameState() { 
 	objectmanager.update();
-		  
+	
+	if(rocket.isActive = false) {
+	currentState = END;
+	}
 	  
 }
 public void updateEndState()  {  

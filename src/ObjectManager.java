@@ -12,6 +12,8 @@ public class ObjectManager implements ActionListener{
 	ArrayList<Alien> aliens = new ArrayList<Alien>();
 	Random random = new Random();
 	
+	int score = 0;
+	
 	public ObjectManager(Rocketship rocket) {
 		this.rocket = rocket;
 	}
@@ -45,6 +47,9 @@ public class ObjectManager implements ActionListener{
 			}
 		}
 		
+		checkCollision();
+		purgeObjects();
+		
 	}
 	
 	
@@ -76,6 +81,22 @@ public class ObjectManager implements ActionListener{
 		}	
 		
 	}
+	
+	public void checkCollision() {
+		for(int i = 0; i < aliens.size(); i++) {
+			for(int g = 0; g < projectiles.size(); g++) {
+				if(projectiles.get(g).collisionBox.intersects(aliens.get(i).collisionBox)) {
+					projectiles.get(g).isActive = false;
+					aliens.get(i).isActive = false;
+				}
+			}
+			if(rocket.collisionBox.intersects(aliens.get(i).collisionBox)) {
+				aliens.get(i).isActive = false;
+				rocket.isActive = false;
+			}
+
+	}
+}
 	
 
 	@Override
