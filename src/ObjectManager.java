@@ -14,8 +14,13 @@ public class ObjectManager implements ActionListener{
 	
 	int score = 0;
 	
+	public int getScore () {
+		return score;
+	}
+	
 	public ObjectManager(Rocketship rocket) {
 		this.rocket = rocket;
+		
 	}
 	
 	public void addProjectile(Projectile p) {
@@ -88,8 +93,11 @@ public class ObjectManager implements ActionListener{
 				if(projectiles.get(g).collisionBox.intersects(aliens.get(i).collisionBox)) {
 					projectiles.get(g).isActive = false;
 					aliens.get(i).isActive = false;
+					score++;
 				}
+			
 			}
+			
 			if(rocket.collisionBox.intersects(aliens.get(i).collisionBox)) {
 				aliens.get(i).isActive = false;
 				rocket.isActive = false;

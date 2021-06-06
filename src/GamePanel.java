@@ -86,7 +86,7 @@ public void  updateMenuState() {
 public void updateGameState() { 
 	objectmanager.update();
 	
-	if(rocket.isActive = false) {
+	if(objectmanager.rocket.isActive== false) {
 	currentState = END;
 	}
 	  
@@ -135,6 +135,7 @@ public void drawEndState(Graphics g)  {
 	g.setFont(title6Font);
 	g.setColor(Color.YELLOW);
 	g.drawString("Press ENTER to restart", 45, 500);
+	g.drawString(objectmanager.getScore() + "", 50, 500);
 }
 
 
@@ -173,6 +174,8 @@ public void keyPressed(KeyEvent e) {
 	    if (currentState == END) {
 	        currentState = MENU;
 	        alienSpawn.stop();
+	         rocket = new Rocketship(250, 550, width, height);
+	         objectmanager = new ObjectManager(rocket);
 	    } else {
 	        currentState++;
 	        startGame();
