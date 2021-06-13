@@ -131,11 +131,10 @@ public void drawEndState(Graphics g)  {
 	g.drawString("GAMEOVER", 15, 100);
 	g.setFont(title5Font);
 	g.setColor(Color.YELLOW);
-	g.drawString("You killed enemies", 80, 300);
+	g.drawString("You killed " + objectmanager.getScore() + " enemies", 80, 300);
 	g.setFont(title6Font);
 	g.setColor(Color.YELLOW);
 	g.drawString("Press ENTER to restart", 45, 500);
-	g.drawString(objectmanager.getScore() + "", 50, 500);
 }
 
 
@@ -194,17 +193,17 @@ public void keyPressed(KeyEvent e) {
 
 
 if (e.getKeyCode()==KeyEvent.VK_UP) {
-    if (rocket.y < 0) {
-    	rocket.y = 0;
+    if (objectmanager.rocket.y < 0) {
+    	objectmanager.rocket.y = 0;
     } else {
-    	rocket.up();
+    	objectmanager.rocket.up();
     }
 } else if (e.getKeyCode()==KeyEvent.VK_DOWN){
-	rocket.down();
+	objectmanager.rocket.down();
 } else if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-	rocket.right();
+	objectmanager.rocket.right();
 } else if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-	rocket.left();
+	objectmanager.rocket.left();
 }
 
 }

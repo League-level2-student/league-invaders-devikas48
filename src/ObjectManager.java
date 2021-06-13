@@ -52,6 +52,8 @@ public class ObjectManager implements ActionListener{
 			}
 		}
 		
+		rocket.update();
+		
 		checkCollision();
 		purgeObjects();
 		
